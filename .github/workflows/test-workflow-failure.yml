@@ -38,7 +38,6 @@ jobs:
       contents: read
     steps:
     - name: The job testfailure has failed
-      if: ${{ failure() }}
       run: echo "Job testfailure failed."
 
   
