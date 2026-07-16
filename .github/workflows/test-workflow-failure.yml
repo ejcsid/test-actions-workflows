@@ -1,1 +1,21 @@
+name: test-workflow-failure
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  testfailure:
+    runs-on: ubuntu-latest
+    # Required permissions
+    permissions:
+      contents: read
+    steps:
+    - name: Failing step
+      id: demo
+      run: exit 1
+    - name: The demo step has failed
+      if: ${{ failure() && steps.demo.conclusion == 'failure' }}
+      run: echo "Job demo failed."
 
