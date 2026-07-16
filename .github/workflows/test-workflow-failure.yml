@@ -18,9 +18,19 @@ jobs:
     - name: The demo step has failed
       if: ${{ failure() && steps.demo.conclusion == 'failure' }}
       run: echo "Job demo failed."
+  anotherfailure:
+    runs-on: ubuntu-latest
+    # Required permissions
+    permissions:
+      contents: read
+    steps:
+      - name: Failing step
+        id: demo
+        run: exit 1
   handlefailure:
     needs: 
       - testfailure
+      - anotherfailure
     if: ${{ failure() }}
     runs-on: ubuntu-latest
     # Required permissions
