@@ -1,0 +1,23 @@
+name: test-workflow-inputs-env
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+    inputs:
+      my-input:
+        default: "input value"
+
+env:
+  DEFAULT_ENV_VALUE: "env value"
+
+jobs:
+  echo-value:
+    runs-on: ubuntu-latest
+    # Required permissions
+    permissions:
+      contents: read
+    steps:
+    - name: The job testfailure has failed
+      run: echo ${{ inputs.my-input || env.DEFAULT_ENV_VALUE }}
