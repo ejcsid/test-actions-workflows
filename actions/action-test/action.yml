@@ -1,1 +1,14 @@
+name: "Check env TEST_RUN"
+description: "Checks whether it is a test run or not."
 
+permissions: {}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Running if not a test run
+      if: env.TEST_RUN != 'true'
+      run: echo "This is not a test run!"
+    - name: Running if it is a test run
+      if: env.TEST_RUN == 'true'
+      run: echo "This is a test run!"
