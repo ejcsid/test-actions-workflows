@@ -17,4 +17,5 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: ./actions/action-test
+      - name: run-action-test
+        uses: ./actions/action-test
