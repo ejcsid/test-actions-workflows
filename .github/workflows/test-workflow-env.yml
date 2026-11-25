@@ -1,1 +1,20 @@
+# Workflow to checkout repository
+name: Test action action-testrun
+on:
+  push: 
+  workflow_dispatch: 
 
+permissions:
+  contents: read # for checkout
+
+jobs:
+  test-env-testrun-notset:
+    name: test-env-testrun-notset
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout-local-actions
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./actions/action-test
