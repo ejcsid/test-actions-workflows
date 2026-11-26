@@ -8,9 +8,9 @@ runs:
   steps:
     - name: Running if not a test run
       if: env.TEST_RUN != 'true'
-      bash: shell: 
+      shell: bash 
       run: echo "This is not a test run!"
     - name: Running if it is a test run
       if: env.TEST_RUN == 'true'
-      bash: shell
+      shell: bash
       run: echo "This is a test run!"
